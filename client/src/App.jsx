@@ -4,6 +4,8 @@ import Users from "./pages/Users";
 import Businesses from "./pages/Businesses";
 import CreateReview from "./pages/CreateReview";
 import Home from "./pages/Home";
+import Login from "./pages/login";
+import Register from "./pages/register";
 
 function App() {
   const [auth, setAuth] = useState({});
@@ -88,6 +90,20 @@ function App() {
         />
         <Route path="/users" element={<Users users={users} />} />
         {!!auth.id && <Route path="/createReview" element={<CreateReview />} />}
+        <Route
+          path="/login"
+          element={
+            <Login
+            authAction={authAction}
+            auth={auth}/>} 
+        />
+        <Route
+          path="/register"
+          element={
+            <Register
+            authAction={authAction}
+            auth={auth}/>} 
+        />
       </Routes>
     </>
   );
