@@ -67,7 +67,10 @@ function App() {
         {auth.id ? (
           <Link to="/createReview">Create Review</Link>
         ) : (
-          <Link to="/">Register/Login</Link>
+          <>
+            <Link to="/register">Register</Link>
+            <Link to="/login">Login</Link>
+          </>
         )}
       </nav>
       {auth.id && <button onClick={logout}>Logout {auth.username}</button>}
