@@ -15,7 +15,16 @@ function App() {
 
   useEffect(() => {
     attemptLoginWithToken();
+    getBusinesses();
   }, []);
+
+  const getBusinesses = async () => {
+    const response = await fetch(`/api/business`); 
+    const json = await response.json();
+    if (response.ok) {
+      setBusinesses(json);
+    } 
+};
 
   const attemptLoginWithToken = async () => {
     const token = window.localStorage.getItem("token");

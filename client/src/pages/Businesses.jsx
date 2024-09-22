@@ -1,6 +1,12 @@
+import "./businesses.css";
+
 const Businesses = ({ businesses })=> {
   return (
-    <h1>Placeholder for Businesses { businesses.length }</h1>
+    <div>
+      {businesses.map(
+        (business) => (<div>{business.name}</div>)
+    )}
+    </div>
   );
 }
 
