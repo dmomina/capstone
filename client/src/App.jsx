@@ -6,6 +6,7 @@ import CreateReview from "./pages/CreateReview";
 import Home from "./pages/Home";
 import Login from "./pages/login";
 import Register from "./pages/register";
+import SingleBusiness from "./pages/SingleBusiness";
 
 function App() {
   const [auth, setAuth] = useState({});
@@ -24,7 +25,7 @@ function App() {
     if (response.ok) {
       setBusinesses(json);
     } 
-};
+  };
 
   const attemptLoginWithToken = async () => {
     const token = window.localStorage.getItem("token");
@@ -115,6 +116,12 @@ function App() {
             <Register
             authAction={authAction}
             auth={auth}/>} 
+        />
+        <Route
+          path="/business/:id"
+          element={
+            <SingleBusiness />
+          } 
         />
       </Routes>
     </>
