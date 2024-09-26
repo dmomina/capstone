@@ -1,0 +1,21 @@
+.business-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    max-height: 5%;
+    text-align: center;
+    align-items: center;
+    padding-right: 60px;
+    padding-left: 60px;
+};
+
+.business-list img {
+    height: auto;
+};
+
+.body-style {
+    font-weight: bold;
+    font-size: 20px;
+}

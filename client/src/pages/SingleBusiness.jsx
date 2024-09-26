@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from 'react'
+import { Link } from "react-router-dom";
 
-function SingleBusiness({}) {
+function SingleBusiness({pageType}) {
     const {id} = useParams();
     const [business, setBusiness] = useState(null);
 
@@ -17,15 +18,27 @@ function SingleBusiness({}) {
         } 
     };
 
+    const singleBusinessStyles = {
+        width: pageType === "single-business" ? "70%" : "70%",
+        margin: pageType === "single-business" ? "0 auto" : null,
+      };
+      
+      const imgSingleStyles = {
+        width: pageType === "single-business" ? "70%" : "70%",
+      }
+
     return (
-        <>
+        <div className="single-business-list" style={singleBusinessStyles}>
             {business && (
                 <>
                     <p>{business.name} {":"} {business.description}</p>
-                    <img src = {business.image}></img>  
+                    <br />
+                    <img src = {business.image} style={imgSingleStyles}></img> 
+                    <br /> 
+                    <Link to={`/createReview`}>Create a Review for {business.name}</Link>
                 </> 
             )}
-        </>
+        </div>
     )
 }
 

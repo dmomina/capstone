@@ -13,10 +13,15 @@ function App() {
   const [users, setUsers] = useState([]);
   const [businesses, setBusinesses] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [token, setToken] = useState([]);
 
   useEffect(() => {
     attemptLoginWithToken();
     getBusinesses();
+    const localtoken = window.localStorage.getItem("token");
+      if(localtoken) {
+        setToken(localtoken);
+      }
   }, []);
 
   const getBusinesses = async () => {
@@ -99,10 +104,30 @@ function App() {
         />
         <Route
           path="/businesses"
-          element={<Businesses businesses={businesses} />}
+          element={
+            <Businesses 
+              businesses={businesses} 
+              token={token}
+            />
+          }
         />
-        <Route path="/users" element={<Users users={users} />} />
-        {!!auth.id && <Route path="/createReview" element={<CreateReview />} />}
+        <Route 
+          path="/users" 
+          element={
+            <Users 
+              users={users} 
+            />
+          } 
+        />
+        {
+          !!auth.id && 
+          <Route 
+          path="/createReview" 
+          element={
+            <CreateReview />
+          } 
+          />
+        }
         <Route
           path="/login"
           element={

@@ -7,4 +7,6 @@ router.use("/users", require("./users"));
 
 router.use("/business", require("./business"));
 
+router.use("/reviews", require("./reviews"));
+
 module.exports = router;

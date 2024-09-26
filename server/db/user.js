@@ -28,6 +28,7 @@ const createUser = async ({ username, password }) => {
 const findUserWithToken = async (token) => {
   let id;
   try {
+    console.log(token);
     const payload = await jwt.verify(token, JWT);
     id = payload.id;
   } catch (ex) {

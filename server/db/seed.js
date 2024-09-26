@@ -1,6 +1,6 @@
 const { client } = require("./client");
 
-const { createUser, fetchUsers, createBusiness, fetchBusiness } = require("./index.js");
+const { createUser, fetchUsers, createBusiness, fetchBusiness, createReview, fetchReview } = require("./index.js");
 
 const createTables = async () => {
   const SQLuser = `
@@ -23,6 +23,18 @@ const createTables = async () => {
     );
   `;
   await client.query(SQLbusiness);
+
+  const SQLreviews = `
+    DROP TABLE IF EXISTS reviews;
+    CREATE TABLE reviews(
+      id SERIAL PRIMARY KEY,
+      userid VARCHAR(255) NOT NULL,
+      businessid VARCHAR(255) NOT NULL,
+      text VARCHAR(1023),
+      rating INT NOT NULL
+    );   
+  `;
+  await client.query(SQLreviews);
 };
 
 const businesses = [
@@ -78,6 +90,8 @@ const init = async () => {
   console.log(await fetchUsers());
 
   console.log(await fetchBusiness());
+
+  console.log(await fetchReview())
 
   client.end();
 };
