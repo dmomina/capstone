@@ -2,15 +2,15 @@ import "./businesses.css";
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Businesses = ({ businesses, pageType })=> {
-const businessStyles = {
-  width: pageType === "business" ? "40%" : "40%",
-  margin: pageType === "business" ? "0 auto" : null,
-};
+const Businesses = ({ businesses, pageType, token })=> {
+  const businessStyles = {
+    width: pageType === "business" ? "40%" : "40%",
+    margin: pageType === "business" ? "0 auto" : null,
+  };
 
-const imgStyles = {
-  width: pageType === "business" ? "40%" : "100%",
-}
+  const imgStyles = {
+    width: pageType === "business" ? "40%" : "100%",
+  };
 
   return (
     <div className="business-list" style={businessStyles}>

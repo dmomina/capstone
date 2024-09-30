@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from 'react'
-import { Link } from "react-router-dom";
 
-function SingleBusiness({pageType}) {
+function SingleBusiness({pageType, token}) {
     const {id} = useParams();
     const [business, setBusiness] = useState(null);
 
@@ -35,7 +34,10 @@ function SingleBusiness({pageType}) {
                     <br />
                     <img src = {business.image} style={imgSingleStyles}></img> 
                     <br /> 
-                    <Link to={`/createReview`}>Create a Review for {business.name}</Link>
+                    {token && (
+                        <p> <a href='/createReview'>Create a Review for {business.name}</a></p>
+                    )}
+                    {!token && (<p> <a href='/login'>Login</a> to review!</p>)}
                 </> 
             )}
         </div>

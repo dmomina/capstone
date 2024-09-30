@@ -73,4 +73,10 @@ const authenticate = async ({ username, password }) => {
   return { token };
 };
 
-module.exports = { createUser, findUserWithToken, fetchUsers, authenticate };
+const fetchSingleUsers = async (id) => {
+  const SQL = `SELECT * FROM users WHERE id=$1`;
+  const response = await client.query(SQL, [id]);
+  return response.rows;
+}
+
+module.exports = { createUser, findUserWithToken, fetchUsers, authenticate, fetchSingleUsers };

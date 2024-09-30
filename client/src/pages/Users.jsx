@@ -1,6 +1,20 @@
-const Users = ({ users })=> {
+import React from "react";
+import { Link } from "react-router-dom";
+
+const Users = ({ users, token })=> {
+  
   return (
-    <h1>Placeholder for Users { users.length }</h1>
+    <>
+      {users.map(
+        (users) => (
+          <div key={users.id}>
+            {users.username}
+            <br />
+            <Link to={`/users/${users.id}`}>See {users.username} all reviews</Link>
+          </div>
+        )
+      )}
+    </>
   );
 }
 

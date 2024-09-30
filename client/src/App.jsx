@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import SingleBusiness from "./pages/SingleBusiness";
+import SingleUsers from "./pages/SingleUsers.jsx";
 
 function App() {
   const [auth, setAuth] = useState({});
@@ -18,6 +19,7 @@ function App() {
   useEffect(() => {
     attemptLoginWithToken();
     getBusinesses();
+    getUsers();
     const localtoken = window.localStorage.getItem("token");
       if(localtoken) {
         setToken(localtoken);
@@ -29,6 +31,14 @@ function App() {
     const json = await response.json();
     if (response.ok) {
       setBusinesses(json);
+    } 
+  };
+
+  const getUsers = async () => {
+    const response = await fetch(`/api/users`); 
+    const json = await response.json();
+    if (response.ok) {
+      setUsers(json);
     } 
   };
 
@@ -83,8 +93,7 @@ function App() {
           <Link to="/createReview">Create Review</Link>
         ) : (
           <>
-            <Link to="/register">Register</Link>
-            <Link to="/login">Login</Link>
+            <Link to="/login">Login/Register</Link>
           </>
         )}
       </nav>
@@ -116,6 +125,7 @@ function App() {
           element={
             <Users 
               users={users} 
+              token={token}
             />
           } 
         />
@@ -124,7 +134,9 @@ function App() {
           <Route 
           path="/createReview" 
           element={
-            <CreateReview />
+            <CreateReview 
+              token={token}
+            />
           } 
           />
         }
@@ -132,20 +144,35 @@ function App() {
           path="/login"
           element={
             <Login
-            authAction={authAction}
-            auth={auth}/>} 
+              authAction={authAction}
+              auth={auth}
+              token={token}
+            />
+          } 
         />
         <Route
           path="/register"
           element={
             <Register
-            authAction={authAction}
-            auth={auth}/>} 
+              authAction={authAction}
+              auth={auth}
+            />
+          } 
         />
         <Route
           path="/business/:id"
           element={
-            <SingleBusiness />
+            <SingleBusiness 
+              token={token}
+            />
+          } 
+        />
+        <Route
+          path="/users/:id"
+          element={
+            <SingleUsers
+              token={token}
+            />
           } 
         />
       </Routes>
