@@ -1,9 +1,11 @@
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from 'react'
 
-function SingleBusiness({pageType, token}) {
+function SingleBusiness({pageType}) {
     const {id} = useParams();
     const [business, setBusiness] = useState(null);
+
+    const token = window.localStorage.getItem("token");
 
     useEffect(() => {
         getSingleBusinesses();
@@ -20,11 +22,12 @@ function SingleBusiness({pageType, token}) {
     const singleBusinessStyles = {
         width: pageType === "single-business" ? "70%" : "70%",
         margin: pageType === "single-business" ? "0 auto" : null,
-      };
+    };
       
-      const imgSingleStyles = {
+    const imgSingleStyles = {
         width: pageType === "single-business" ? "70%" : "70%",
-      }
+    };
+    
 
     return (
         <div className="single-business-list" style={singleBusinessStyles}>
@@ -35,7 +38,7 @@ function SingleBusiness({pageType, token}) {
                     <img src = {business.image} style={imgSingleStyles}></img> 
                     <br /> 
                     {token && (
-                        <p> <a href='/createReview'>Create a Review for {business.name}</a></p>
+                        <p> <a href='/createReview'>Review {business.name}</a></p>
                     )}
                     {!token && (<p> <a href='/login'>Login</a> to review!</p>)}
                 </> 
