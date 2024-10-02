@@ -29,7 +29,7 @@ const createTables = async () => {
     CREATE TABLE reviews(
       id SERIAL PRIMARY KEY,
       userid VARCHAR(255) NOT NULL,
-      businessid VARCHAR(255) NOT NULL,
+      businessid INT NOT NULL,
       text VARCHAR(1023),
       rating INT NOT NULL
     );   

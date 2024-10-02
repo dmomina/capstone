@@ -40,11 +40,9 @@ const CreateReview = ({ businesses })=> {
       <form onSubmit={handleSubmit} id="rating-form">
         <label htmlFor="business-select">Pick a Business</label>
         <select name="businessid" id="business-select" onChange={handleInput}>
-          <option value="">--Please Choose a Business--</option>
-          <option value="Acme Pizza">Acme Pizza</option>
-          <option value="Moe's Typewriter Repair">Moe's Typewriter Repair</option>
-          <option value="Lucy's Candy Shop">Lucy's Candy Shop</option>
-          <option value="Mary's Flower Shop">Mary's Flower Shop</option>
+          {businesses.map((business) => (
+            <option value={business.id} key={business.id}>{business.name}</option>
+          ))}
         </select>
         <br />
         <label>

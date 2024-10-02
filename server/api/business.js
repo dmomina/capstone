@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const { fetchBusiness, fetchSingleBusiness } = require("../db");
+const {fetchBusinessReview} = require("../db")
 
 router.get("/", async (req, res, next) => {
   try {
@@ -19,6 +20,15 @@ router.get("/:id", async (req, res, next) => {
     next(ex);
   }
 });
+
+router.get("/:id/reviews", async (req, res, next) => {
+  try {
+    const id = Number(req.params.id);
+    res.send(await fetchBusinessReview(id));
+  } catch (ex) {
+    next (ex);
+  }
+})
 
 module.exports = router;
 

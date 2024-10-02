@@ -9,6 +9,7 @@ import Register from "./pages/register";
 import SingleBusiness from "./pages/SingleBusiness";
 import SingleUsers from "./pages/SingleUsers.jsx";
 
+
 function App() {
   const [auth, setAuth] = useState({});
   const [users, setUsers] = useState([]);
@@ -20,6 +21,7 @@ function App() {
     attemptLoginWithToken();
     getBusinesses();
     getUsers();
+    getReviews();
     const localtoken = window.localStorage.getItem("token");
       if(localtoken) {
         setToken(localtoken);
@@ -41,6 +43,14 @@ function App() {
       setUsers(json);
     } 
   };
+
+  const getReviews = async () => {
+    const response = await fetch (`/api/reviews`);
+    const json = await response.json();
+    if (response.ok) {
+      setReviews(json);
+    }
+  }
 
   const attemptLoginWithToken = async () => {
     const token = window.localStorage.getItem("token");
@@ -135,7 +145,7 @@ function App() {
           path="/createReview" 
           element={
             <CreateReview 
-              token={token}
+              businesses={businesses} 
             />
           } 
           />
@@ -171,6 +181,14 @@ function App() {
           path="/users/:id"
           element={
             <SingleUsers
+              token={token}
+            />
+          } 
+        />
+        <Route
+          path="/business/:id/reviews"
+          element={
+            <SingleBusiness
               token={token}
             />
           } 
