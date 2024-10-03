@@ -1,6 +1,7 @@
 import React, { useEffect, useState, usseEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import "./CreateReview.css"
 
 const CreateReview = ({ businesses })=> {
 
@@ -40,8 +41,11 @@ const CreateReview = ({ businesses })=> {
       <form onSubmit={handleSubmit} id="rating-form">
         <label htmlFor="business-select">Pick a Business</label>
         <select name="businessid" id="business-select" onChange={handleInput}>
+          <option value="">--Please Choose a Business--</option>
           {businesses.map((business) => (
-            <option value={business.id} key={business.id}>{business.name}</option>
+            <>
+              <option value={business.id} key={business.id}>{business.name}</option>
+            </>
           ))}
         </select>
         <br />

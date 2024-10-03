@@ -100,14 +100,16 @@ function App() {
         <Link to="/businesses">Businesses ({businesses.length})</Link>
         <Link to="/users">Users ({users.length})</Link>
         {auth.id ? (
-          <Link to="/createReview">Create Review</Link>
+          <>
+            <Link to="/createReview">Create Review</Link>
+            <button onClick={logout}>Logout {auth.username}</button>
+          </>
         ) : (
           <>
             <Link to="/login">Login/Register</Link>
           </>
         )}
       </nav>
-      {auth.id && <button onClick={logout}>Logout {auth.username}</button>}
       <Routes>
         <Route
           path="/"

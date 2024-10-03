@@ -1,20 +1,33 @@
 body {
-  font-family: verdana;
-}
-form {
-  display: flex;
-  flex-direction: column;
-  padding: 30px;
-}
-
-form > * {
-  margin: 0.5rem;
+  font-family: Graphik;
 }
 
 nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 10px 20px; 
+  background-color: #3D52A0; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
+
+nav a, nav button {
+  color: #EDE8F5; 
+  text-decoration: none; 
+  padding: 10px 15px; 
+  font-size: 16px; 
+  font-weight: bold; 
+  background: none;
+  border: none;
+  font-family: Helvetica Neue;
+  cursor: pointer;
+}
+
+nav a:hover, nav button:hover {
+  background-color: #7091E6; 
+  border-radius: 4px; 
+}
+
 
 .error {
   background-color: tomato;

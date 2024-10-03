@@ -26,9 +26,15 @@ function SingleBusiness({pageType}) {
         const response = await fetch(`/api/business/${id}/reviews`);
         const json = await response.json();
         if (response.ok) {
+            // create a const and put json[0] in it which will be all reviews
+            // then loop through all reviews and for each review make a request to fetch the user by the user id
+            // const allReviews = json([0]);
+            // for ({reviews.userid}) {
+            //     const userName = await fetch(`api/users/${id}`)
+            // }
             setReviews(json[0]);
         } 
-    }
+    };
 
     const singleBusinessStyles = {
         width: pageType === "single-business" ? "70%" : "70%",
@@ -38,7 +44,6 @@ function SingleBusiness({pageType}) {
     const imgSingleStyles = {
         width: pageType === "single-business" ? "70%" : "70%",
     };
-    
 
     return (
         <div className="single-business-list" style={singleBusinessStyles}>
@@ -58,7 +63,9 @@ function SingleBusiness({pageType}) {
                 <>
                     <p>All {business.name} Reviews:</p>
                     <br />
-                    <p>{reviews.text}</p>
+                    <p>Review:{reviews.userid}</p>
+                    <p>Review:{reviews.text}</p>
+                    <p>Rating:{reviews.rating}</p>
                 </>
             )}
         </div>
