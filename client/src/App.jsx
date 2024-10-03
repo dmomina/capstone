@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, Route, Routes } from "react-router-dom";
-import Users from "./pages/Users";
-import Businesses from "./pages/Businesses";
-import CreateReview from "./pages/CreateReview";
+import Users from "./pages/User/Users.jsx";
+import Businesses from "./pages/Business/Businesses.jsx";
+import CreateReview from "./pages/Review/CreateReview.jsx";
 import Home from "./pages/Home";
-import Login from "./pages/login";
-import Register from "./pages/register";
-import SingleBusiness from "./pages/SingleBusiness";
-import SingleUsers from "./pages/SingleUsers.jsx";
+import Login from "./pages/Login.jsx";
+import Register from "./pages/Register.jsx";
+import SingleBusiness from "./pages/SingleBusiness/SingleBusiness.jsx";
+import SingleUsers from "./pages/SingleUser/SingleUsers.jsx";
 
 
 function App() {
@@ -94,15 +94,15 @@ function App() {
 
   return (
     <>
-      <h1>Acme Business Reviews</h1>
+      <h1 className="title">Acme Business Reviews</h1>
       <nav>
-        <Link to="/">Home</Link>
-        <Link to="/businesses">Businesses ({businesses.length})</Link>
-        <Link to="/users">Users ({users.length})</Link>
+        <Link to="/">HOME</Link>
+        <Link to="/businesses">BUSINESSES ({businesses.length})</Link>
+        <Link to="/users">USERS ({users.length})</Link>
         {auth.id ? (
           <>
-            <Link to="/createReview">Create Review</Link>
-            <button onClick={logout}>Logout {auth.username}</button>
+            <Link to="/createReview">CREATE REVIEW</Link>
+            <button onClick={logout}>LOGOUT {auth.username}</button>
           </>
         ) : (
           <>

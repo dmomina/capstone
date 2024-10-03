@@ -13,7 +13,7 @@ const Businesses = ({ businesses })=> {
               <br/>
               <img src = {business.image} className="business-image" alt={business.name} ></img>
               <br />
-              <Link to={`/business/${business.id}`}>See Details!</Link>
+              <Link to={`/business/${business.id}`} className="link">See Details!</Link>
               <br />
             </div>
           )

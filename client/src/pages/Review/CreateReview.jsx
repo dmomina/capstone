@@ -1,7 +1,7 @@
 import React, { useEffect, useState, usseEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import "./CreateReview.css"
+import "./createReview.css"
 
 const CreateReview = ({ businesses })=> {
 
