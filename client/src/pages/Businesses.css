@@ -1,21 +1,30 @@
 .business-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    max-height: 5%;
-    text-align: center;
-    align-items: center;
-    padding-right: 60px;
-    padding-left: 60px;
-};
-
-.business-list img {
-    height: auto;
-};
-
-.body-style {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px; 
+    padding: 20px; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    font-size: large;
     font-weight: bold;
-    font-size: 20px;
-}
+    color: #3D52A0;
+  }
+  
+  .business-item {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+    border: 1px solid #7091E6; 
+    border-radius: 8px; 
+    padding: 10px; 
+    background-color: #fff; 
+  }
+  
+  .business-image {
+    width: 100%; 
+    height: 300px; 
+    object-fit: cover; 
+    border-radius: 8px; 
+  }
+  

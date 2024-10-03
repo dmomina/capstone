@@ -2,24 +2,16 @@ import "./businesses.css";
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Businesses = ({ businesses, pageType, token })=> {
-  const businessStyles = {
-    width: pageType === "business" ? "40%" : "40%",
-    margin: pageType === "business" ? "0 auto" : null,
-  };
-
-  const imgStyles = {
-    width: pageType === "business" ? "40%" : "100%",
-  };
+const Businesses = ({ businesses })=> {
 
   return (
-    <div className="business-list" style={businessStyles}>
+    <div className="business-list">
         {businesses.map(
           (business) => (
-            <div key={business.id}>
+            <div className="business-item" key={business.id}>
               {business.name}
               <br/>
-              <img src = {business.image} style={imgStyles} ></img>
+              <img src = {business.image} className="business-image" alt={business.name} ></img>
               <br />
               <Link to={`/business/${business.id}`}>See Details!</Link>
               <br />

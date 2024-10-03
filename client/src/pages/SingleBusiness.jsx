@@ -37,8 +37,9 @@ function SingleBusiness({pageType}) {
     };
 
     const singleBusinessStyles = {
-        width: pageType === "single-business" ? "70%" : "70%",
+        width: pageType === "single-business" ? "80%" : "80%",
         margin: pageType === "single-business" ? "0 auto" : null,
+        
     };
       
     const imgSingleStyles = {
