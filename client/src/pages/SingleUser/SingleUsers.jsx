@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from 'react'
 import Ratings from "../Ratings.jsx";
+import "./singleUser.css";
 
 function SingleUsers({token}) {
     const {id} = useParams();
@@ -39,16 +40,16 @@ function SingleUsers({token}) {
     return (
         <>
             {users && (
-                <p>{users.username}</p>
+                <p className="user-info">{users.username}</p>
             )}
             {reviews && reviews.map(
                 (review) => (
-                    <div key={review.id}>
-                        <div>
+                    <div className="review-card" key={review.id}>
+                        <div className="rating-container">
+                            <h3>{review.businessname}</h3>
                             <Ratings numberRating = {review.rating}/>
                         </div>
                         <div>
-                            <h3>{review.businessname}</h3>
                             <p>{review.text}</p>
                         </div>
                     </div>

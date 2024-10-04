@@ -10,7 +10,10 @@ const Businesses = ({ businesses })=> {
         {businesses.map(
           (business) => (
             <div className="business-item" key={business.id}>
-              {business.name} <BusinessRating businessid={business.id}/>
+              <span className="business-name">{business.name}</span> 
+              <div className="business-rating">
+                <BusinessRating businessid={business.id} />
+              </div>
               <br/>
               <img src = {business.image} className="business-image" alt={business.name} ></img>
               <br />

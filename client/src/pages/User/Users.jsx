@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./users.css";
 
 const Users = ({ users })=> {
   
@@ -7,10 +8,10 @@ const Users = ({ users })=> {
     <>
       {users.map(
         (users) => (
-          <div key={users.id}>
-            {users.username}
+          <div className="user-card" key={users.id}>
+            <div className="username">{users.username}</div>
             <br />
-            <Link to={`/users/${users.id}`}>See {users.username} all reviews</Link>
+            <Link to={`/users/${users.id}`}>See all reviews from {users.username}</Link>
           </div>
         )
       )}

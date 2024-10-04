@@ -4,7 +4,7 @@ import StarRatings from "react-star-ratings";
 function Ratings({ numberRating }) {
   return (
     <StarRatings
-      starRatedColor="#e50916"
+      starRatedColor="#E85A4F"
       starEmptyColor="gray"
       rating={numberRating}
       numberOfStars={5}

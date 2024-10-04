@@ -47,7 +47,9 @@ function SingleBusiness({}) {
                 <>
                     <h2>{business.name}</h2> 
                     <p>{business.description}</p>
-                    <BusinessRating businessid={id}/>
+                    <div className="business-rating">
+                        <BusinessRating businessid={id} />
+                    </div>
                     <img src = {business.image} className="business-image" alt={business.name}></img> 
                     {token && (
                         <p> <a href='/createReview'>Review {business.name}</a></p>
@@ -60,8 +62,8 @@ function SingleBusiness({}) {
                 (review) => (
                     <div key={review.id} className="review-container">
                         <div className="review-header">
-                            <h3>{review.username}</h3>
-                            <Ratings numberRating = {review.rating}/>
+                        <h3>{review.username}</h3>
+                        <BusinessRating businessid={id}/>
                         </div>
                         <div className="review-content">
                             <p className="review-text">{review.text}</p>
@@ -69,9 +71,6 @@ function SingleBusiness({}) {
                 </div>
                 )
             )}
-            <div>
-                <BusinessRating businessid={id}/>
-            </div>
         </div>
     )
 }
