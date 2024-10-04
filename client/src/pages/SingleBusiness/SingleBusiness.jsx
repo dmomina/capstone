@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from 'react'
 import "./singleBusiness.css";
+import Ratings from "../Ratings.jsx";
 
 
-function SingleBusiness({pageType}) {
+function SingleBusiness({}) {
     const {id} = useParams();
     const [business, setBusiness] = useState([]);
     const [reviews, setReviews] = useState([]);
@@ -55,11 +56,15 @@ function SingleBusiness({pageType}) {
             <h2>All {business.name} Reviews:</h2>
             {reviews && reviews.map(
                 (review) => (
-                    <div key={review.id}>
-                        <h3>{review.username}</h3> 
-                        <p>{review.rating}</p>
-                        <p>{review.text}</p>
-                    </div>
+                    <div key={review.id} className="review-container">
+                        <div className="review-header">
+                            <h3>{review.username}</h3>
+                            <Ratings numberRating = {review.rating}/>
+                        </div>
+                        <div className="review-content">
+                            <p className="review-text">{review.text}</p>
+                        </div>
+                </div>
                 )
             )}
         </div>

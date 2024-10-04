@@ -1,7 +1,7 @@
 .single-business-list {
     width: 80%; 
     margin: 0 auto; 
-    text-align: center; 
+    font-family: 'Arial', sans-serif;
 }
 
 .single-business-list img {
@@ -13,8 +13,52 @@
 
 h2 {
     margin-top: 20px; 
+    color: #333; 
 }
 
-h3 {
-    margin-top: 40px; 
+.review-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.review-header h3 {
+    margin-right: 15px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.review-rating {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.review-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+    margin-top: 10px; 
+}
+
+.review-content {
+    flex-grow: 1; 
+    padding-left: 20px;
+}
+
+
+.review-container:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }

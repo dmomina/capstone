@@ -102,7 +102,7 @@ function App() {
         {auth.id ? (
           <>
             <Link to="/createReview">CREATE REVIEW</Link>
-            <button onClick={logout}>LOGOUT {auth.username}</button>
+            <button onClick={logout}>LOGOUT {auth.username.toUpperCase()}</button>
           </>
         ) : (
           <>
