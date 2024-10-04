@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from 'react'
 import "./singleBusiness.css";
 import Ratings from "../Ratings.jsx";
+import BusinessRating from "../../components/BusinessRating/BusinessRating.jsx";
 
 
 function SingleBusiness({}) {
@@ -46,6 +47,7 @@ function SingleBusiness({}) {
                 <>
                     <h2>{business.name}</h2> 
                     <p>{business.description}</p>
+                    <BusinessRating businessid={id}/>
                     <img src = {business.image} className="business-image" alt={business.name}></img> 
                     {token && (
                         <p> <a href='/createReview'>Review {business.name}</a></p>
@@ -67,6 +69,9 @@ function SingleBusiness({}) {
                 </div>
                 )
             )}
+            <div>
+                <BusinessRating businessid={id}/>
+            </div>
         </div>
     )
 }

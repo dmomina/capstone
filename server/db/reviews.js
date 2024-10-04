@@ -39,4 +39,15 @@ const fetchBusinessReview = async (businessid) => {
     return response.rows;
 }
 
-module.exports = { createReview, fetchReview, fetchBusinessReview };
+const fetchUserReviews = async (userid) => {
+    const SQL = `
+        SELECT reviews.id, reviews.text, reviews.rating, reviews.userid, reviews.businessid 
+        FROM reviews
+        JOIN users ON reviews.userid = users.id
+        WHERE users.id = $1
+    `;
+    const response = await client.query(SQL, [userid]);
+    return response.rows;
+}
+
+module.exports = { createReview, fetchReview, fetchBusinessReview, fetchUserReviews };

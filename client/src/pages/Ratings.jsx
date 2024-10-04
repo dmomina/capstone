@@ -6,7 +6,7 @@ function Ratings({ numberRating }) {
     <StarRatings
       starRatedColor="#e50916"
       starEmptyColor="gray"
-      rating={numberRating / 2}
+      rating={numberRating}
       numberOfStars={5}
       starDimension={"15px"}
       starSpacing={"1px"}

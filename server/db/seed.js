@@ -28,7 +28,7 @@ const createTables = async () => {
     DROP TABLE IF EXISTS reviews;
     CREATE TABLE reviews(
       id SERIAL PRIMARY KEY,
-      userid VARCHAR(255) NOT NULL,
+      userid UUID NOT NULL,
       businessid INT NOT NULL,
       text VARCHAR(1023),
       rating INT NOT NULL
