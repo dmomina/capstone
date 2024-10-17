@@ -1,0 +1,40 @@
+.home-container {
+    padding: 20px;
+    background-color: #fff; 
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.home-container h1 {
+    font-size: 2.5rem;
+    color: #e85a4f; 
+    margin-bottom: 20px;
+}
+
+.home-container p {
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.home-container p strong {
+    color: #e85a4f; 
+}
+
+.top-rated-business {
+    font-weight: bold;
+    color: #3b3b3b;
+    font-size: 1.3rem;
+    margin-top: 10px;
+}
+
+img {
+    height: 500px; 
+    width: auto; 
+    border-radius: 8px; 
+    margin: 10px 0;
+    display: block;
+}

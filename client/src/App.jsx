@@ -3,7 +3,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import Users from "./pages/User/Users.jsx";
 import Businesses from "./pages/Business/Businesses.jsx";
 import CreateReview from "./pages/Review/CreateReview.jsx";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import SingleBusiness from "./pages/SingleBusiness/SingleBusiness.jsx";
