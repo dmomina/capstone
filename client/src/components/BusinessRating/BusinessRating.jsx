@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import Ratings from '../../pages/Ratings';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 const BusinessRating = ({ businessid })=> {
     const [rating, setRating] = useState();
 
@@ -9,7 +11,7 @@ const BusinessRating = ({ businessid })=> {
     }, []);
 
     const calculateBusinessRating = async () => {
-        const response = await fetch(`/api/business/${businessid}/reviews`); 
+        const response = await fetch(`${BASE_URL}/api/business/${businessid}/reviews`); 
         const allReviews = await response.json();
         if (response.ok) {
             const ratings = allReviews.map((review) => review.rating);

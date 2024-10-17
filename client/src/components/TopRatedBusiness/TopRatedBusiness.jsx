@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Ratings from '../../pages/Ratings';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const TopRatedBusiness = ({ businesses }) => {
     const [topRating, setTopRating] = useState({});
@@ -10,7 +11,7 @@ const TopRatedBusiness = ({ businesses }) => {
     }, [businesses]);
 
     const calculateBusinessRating = async (id) => {
-        const response = await fetch(`/api/business/${id}/reviews`); 
+        const response = await fetch(`${BASE_URL}/api/business/${id}/reviews`); 
         const allReviews = await response.json();
         if (response.ok) {
             const ratings = allReviews.map((review) => review.rating);
@@ -35,7 +36,6 @@ const TopRatedBusiness = ({ businesses }) => {
         }
         setTopRating(ratedTopBusiness);
     }
-    console.log("Top Rating", topRating);
     return (
         <>  
             {topRating &&

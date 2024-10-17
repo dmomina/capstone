@@ -9,6 +9,7 @@ import Register from "./pages/Register.jsx";
 import SingleBusiness from "./pages/SingleBusiness/SingleBusiness.jsx";
 import SingleUsers from "./pages/SingleUser/SingleUsers.jsx";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function App() {
   const [auth, setAuth] = useState({});
@@ -29,7 +30,7 @@ function App() {
   }, []);
 
   const getBusinesses = async () => {
-    const response = await fetch(`/api/business`); 
+    const response = await fetch(`${BASE_URL}/api/business`); 
     const json = await response.json();
     if (response.ok) {
       setBusinesses(json);
@@ -37,7 +38,7 @@ function App() {
   };
 
   const getUsers = async () => {
-    const response = await fetch(`/api/users`); 
+    const response = await fetch(`${BASE_URL}/api/users`); 
     const json = await response.json();
     if (response.ok) {
       setUsers(json);
@@ -45,7 +46,7 @@ function App() {
   };
 
   const getReviews = async () => {
-    const response = await fetch (`/api/reviews`);
+    const response = await fetch (`${BASE_URL}/api/reviews`);
     const json = await response.json();
     if (response.ok) {
       setReviews(json);
@@ -55,7 +56,7 @@ function App() {
   const attemptLoginWithToken = async () => {
     const token = window.localStorage.getItem("token");
     if (token) {
-      const response = await fetch(`/api/auth/me`, {
+      const response = await fetch(`${BASE_URL}/api/auth/me`, {
         headers: {
           authorization: token,
         },
@@ -70,7 +71,7 @@ function App() {
   };
 
   const authAction = async (credentials, mode) => {
-    const response = await fetch(`/api/auth/${mode}`, {
+    const response = await fetch(`${BASE_URL}/api/auth/${mode}`, {
       method: "POST",
       body: JSON.stringify(credentials),
       headers: {

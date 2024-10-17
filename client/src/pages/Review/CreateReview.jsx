@@ -3,8 +3,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "./createReview.css"
 
-const CreateReview = ({ businesses })=> {
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
+const CreateReview = ({ businesses })=> {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
 
@@ -19,7 +20,7 @@ const CreateReview = ({ businesses })=> {
     console.log(formData);
     try {
       axios
-        .post(`/api/reviews/create`, formData, {
+        .post(`${BASE_URL}/api/reviews/create`, formData, {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `${token}`

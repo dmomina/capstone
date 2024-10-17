@@ -4,6 +4,7 @@ import "./singleBusiness.css";
 import Ratings from "../Ratings.jsx";
 import BusinessRating from "../../components/BusinessRating/BusinessRating.jsx";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function SingleBusiness({}) {
     const {id} = useParams();
@@ -18,7 +19,7 @@ function SingleBusiness({}) {
     }, []);
 
     const getSingleBusinesses = async () => {
-        const response = await fetch(`/api/business/${id}`); 
+        const response = await fetch(`${BASE_URL}/api/business/${id}`); 
         const json = await response.json();
         if (response.ok) {
             setBusiness(json[0]);
@@ -26,11 +27,11 @@ function SingleBusiness({}) {
     };
 
     const getSingleBusinessesReviews = async () => {
-        const response = await fetch(`/api/business/${id}/reviews`);
+        const response = await fetch(`${BASE_URL}/api/business/${id}/reviews`);
         const allReviews = await response.json();
         if (response.ok) {
             for (const review of allReviews) {
-                const userResponse = await fetch (`/api/users/${review.userid}`)
+                const userResponse = await fetch (`${BASE_URL}/api/users/${review.userid}`)
                 let user = await userResponse.json();
                 if (userResponse.ok) {
                     user = user[0];

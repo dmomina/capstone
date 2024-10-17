@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import Ratings from "../Ratings.jsx";
 import "./singleUser.css";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 function SingleUsers({token}) {
     const {id} = useParams();
     const [users, setUsers] = useState([]);
@@ -14,7 +16,7 @@ function SingleUsers({token}) {
     }, []);
 
     const getSingleUsers = async () => {
-        const response = await fetch(`/api/users/${id}`); 
+        const response = await fetch(`${BASE_URL}/api/users/${id}`); 
         const json = await response.json();
         if (response.ok) {
             setUsers(json[0]);
@@ -22,11 +24,11 @@ function SingleUsers({token}) {
     };
 
     const getSingleUserReviews = async () => {
-        const response = await fetch(`/api/users/${id}/reviews`);
+        const response = await fetch(`${BASE_URL}/api/users/${id}/reviews`);
         const allReviews = await response.json();
         if (response.ok) {
             for (const review of allReviews) {
-                const businessResponse = await fetch(`/api/business/${review.businessid}`)
+                const businessResponse = await fetch(`${BASE_URL}/api/business/${review.businessid}`)
                 let business = await businessResponse.json();
                 if (businessResponse.ok) {
                     business = business[0];
