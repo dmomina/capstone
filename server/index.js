@@ -3,8 +3,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 const { client } = require("./db");
 client.connect();
+const cors = require("cors");
 
 app.use(express.json());
+
+app.use(cors());
 
 app.use("/api", require("./api"));
 
