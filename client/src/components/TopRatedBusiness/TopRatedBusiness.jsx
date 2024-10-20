@@ -15,18 +15,21 @@ const TopRatedBusiness = ({ businesses }) => {
         const allReviews = await response.json();
         if (response.ok) {
             const ratings = allReviews.map((review) => review.rating);
-            const sumOfRatings = ratings.reduce(
-                (accumulator, currentValue) => accumulator + currentValue
-            );
-            const meanRating = sumOfRatings / ratings.length;
-            return meanRating;
+            if (ratings) {
+                const sumOfRatings = ratings.reduce(
+                    (accumulator, currentValue) => accumulator + currentValue
+                );
+                const meanRating = sumOfRatings / ratings.length;
+                return meanRating;
+            } 
         }
+        return null;
     };
 
     const calculateTopRatedBusiness = async () => {
         for (const business of businesses) {
             const overallRating = await calculateBusinessRating(business.id);
-            business.overallRating = overallRating
+            business.overallRating = overallRating ?? 0;
         }
         let ratedTopBusiness = businesses[0];
         for (const business of businesses) {
