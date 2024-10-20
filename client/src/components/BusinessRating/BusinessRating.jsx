@@ -15,11 +15,13 @@ const BusinessRating = ({ businessid })=> {
         const allReviews = await response.json();
         if (response.ok) {
             const ratings = allReviews.map((review) => review.rating);
-            const sumOfRatings = ratings.reduce(
-                (accumulator, currentValue) => accumulator + currentValue
-            );
-            const meanRating = sumOfRatings / ratings.length;
-            setRating(meanRating);
+            if (ratings) {
+                const sumOfRatings = ratings.reduce(
+                    (accumulator, currentValue) => accumulator + currentValue
+                );
+                const meanRating = sumOfRatings / ratings.length;
+                setRating(meanRating);
+            }
         }
     };
     
