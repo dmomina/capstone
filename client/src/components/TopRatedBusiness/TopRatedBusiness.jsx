@@ -13,7 +13,7 @@ const TopRatedBusiness = ({ businesses }) => {
     const calculateBusinessRating = async (id) => {
         const response = await fetch(`${BASE_URL}/api/business/${id}/reviews`); 
         const allReviews = await response.json();
-        if (response.ok) {
+        if (response.ok && allReviews.length) {
             const ratings = allReviews.map((review) => review.rating);
             if (ratings) {
                 const sumOfRatings = ratings.reduce(
@@ -37,7 +37,7 @@ const TopRatedBusiness = ({ businesses }) => {
                 ratedTopBusiness = business;
             }
         }
-        if (ratedTopBusiness.rating >= 1) {
+        if (ratedTopBusiness.overallRating >= 1) {
             setTopRating(ratedTopBusiness);
         } 
     }
