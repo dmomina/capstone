@@ -28,7 +28,9 @@ const CreateReview = ({ businesses })=> {
         })
         .then ((response) => {
           if (response.data) {
+            navigate(`/business/${formData.businessid}`)
             console.log(response);
+            
           }
         })
     } catch (err) {
@@ -42,7 +44,7 @@ const CreateReview = ({ businesses })=> {
       <form onSubmit={handleSubmit} id="rating-form">
         <label htmlFor="business-select">Pick a Business</label>
         <select name="businessid" id="business-select" onChange={handleInput}>
-          <option value="">--Please Choose a Business--</option>
+          <option value="" key="0">--Please Choose a Business--</option>
           {businesses.map((business) => (
             <>
               <option value={business.id} key={business.id}>{business.name}</option>
