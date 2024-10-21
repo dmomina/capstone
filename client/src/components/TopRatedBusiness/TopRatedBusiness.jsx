@@ -37,7 +37,7 @@ const TopRatedBusiness = ({ businesses }) => {
                 ratedTopBusiness = business;
             }
         }
-        if (ratedTopBusiness.overallRating >= 1) {
+        if (ratedTopBusiness && ratedTopBusiness.overallRating >= 1) {
             setTopRating(ratedTopBusiness);
         } 
     }
