@@ -17,7 +17,6 @@ const CreateReview = ({ businesses })=> {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
     try {
       axios
         .post(`${BASE_URL}/api/reviews/create`, formData, {
@@ -29,8 +28,6 @@ const CreateReview = ({ businesses })=> {
         .then ((response) => {
           if (response.data) {
             navigate(`/business/${formData.businessid}`)
-            console.log(response);
-            
           }
         })
     } catch (err) {
